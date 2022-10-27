@@ -15,6 +15,7 @@
   --global-html-color: var(--global-color-front);
   --global-html-backgroundColor: var(--global-color-back);
   --global-selection-backgroundColor: var(--global-color-front);
+
 }
 
 /*------------------------------------*\
@@ -43,6 +44,11 @@ html {
 }
 
 body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--global-html-backgroundColor);
 }
 
 /*
@@ -132,16 +138,80 @@ body {
     Component: Robot
 */
 
+
+#Robot_master{
+  width: 300px;
+  height: 300px;
+}
+.c-robot--css-anim #Shadow{
+  animation-name: shadowPulse;
+  animation-duration: 0.75s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  /* Zet de tranform origin op 50% 100% om hem in het midden onderaan tov zichzelf te positioneren. */
+  /*standaard is het op 0 0, dus linksboven */
+  transform-origin: 50% 100%; 
+}
+.c-robot--css-anim #Robot{
+  animation-name: robotHover;
+  animation-duration: 0.75s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
 .c-robot {
+  --c-robot-animation-duration: 0.75s;
+  --c-robot-animation-timing-function: ease-in-out;
+  --c-robot-animation-iteration-count: infinite;
+  --c-robot-animation-direction: alternate;
+  fill: var(--global-html-color);
+ 
 }
 
+/* .parent:has(.input:checked)::after{
+  con 
+} */
 .c-robot__shadow {
+  opacity: 0.1;
+  fill: var(--robot-shadow-color black);
 }
 
+
+
+@keyframes shadowPulse {  
+  100% {
+    transform: scale(0.75);
+  }
+}
+@keyframes robotHover {
+  0%{
+    transform: translateY(2.5%)
+  }
+  100%{
+    transform: translateY(-2.5%)
+  }
+}
 
 /*
     Component: Controls
 */
+.c-controls {
+  display: block;
+}
+/* .c-controls__list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  
+}
+.c-controls__button{
+  text-transform: uppercase;
+  font-size: 12px;
+  color: var(--global-color-front);
+
+} */
 
 /*------------------------------------*\
 #UTILITIES
@@ -217,3 +287,5 @@ body {
     page-break-after: avoid;
   }
 }
+
+
